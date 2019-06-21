@@ -30,9 +30,9 @@ Imported modules are used. **react-datepicker** allows us to pick the date and t
 ### The src folder
 As usual - src holds most of the application logic. 
 
-**/assets** contains static files and constants.
-**/utils** contains functions related to the acquisition or parsing of data.
-**/styles** contains stylings. 
+**/assets** contains static files and constants.  
+**/utils** contains functions related to the acquisition or parsing of data.  
+**/styles** contains stylings.  
 
 ### A word on stylings
 My approach to styling folder structure is largely inspired by [David Khourshid's primer](https://hugogiraudel.com/2015/06/18/styling-react-components-in-sass/) on namespacing in styling - the most disheartening thing in the world is not understanding why your CSS isn't affecting the page, and a proactive approach to namespacing wards that off nicely. In short, I do the following in order:
