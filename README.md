@@ -20,12 +20,12 @@ June 19, 2019
 -- Should list bookings in ascending order by date
 
 ### General overview
-All basic requirements are fulfilled.
-**React** is our weapon of choice. 
-Our bundling tool is **Webpack**.
-Stylings are provided via **Sass** and in-lined with Webpack.
-State is managed via **Hooks**. 
-Virtually every component is a functional component.
+All basic requirements are fulfilled.  
+**React** is our weapon of choice.  
+Our bundling tool is **Webpack**.  
+Stylings are provided via **Sass** and in-lined with Webpack.  
+State is managed via **Hooks**.  
+Virtually every component is a functional component.  
 Imported modules are used. **react-datepicker** allows us to pick the date and time while **react-dropdown** manages the dropdown menu.
 
 ### The src folder
