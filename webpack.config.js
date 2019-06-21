@@ -50,7 +50,7 @@ module.exports = () => {
       ]
     },
     devServer: {
-      publicPath: 'build',
+      publicPath: 'build/',
       port: 8080,
     },
     plugins: [

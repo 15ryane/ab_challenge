@@ -35,19 +35,23 @@
       input{
         margin: 6px 0px;
         margin-right: 6px;
-        padding: 7px; 
+        padding: 13px 7px; 
 
         border-radius: 3px;
         border: 0.5px solid #979797;
       }
-      .booking-types{
+      .react-select-container{
         padding: 6px; 
         padding-left: 0px;
-        .Dropdown-control{
+
+        .react-select__control{
           border-radius: 3px;
-          border: 0.5px solid #979797;
-          color: black;
+          border: 0.5px solid #979797;          
         }
+        .react-select__single-value{
+          padding: 2px;
+        }
+      
       }
     }
 

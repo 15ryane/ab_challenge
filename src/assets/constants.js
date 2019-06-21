@@ -3,11 +3,6 @@
  */
 
 const constants = {
-  
-  bookingTypes: [
-    'Housekeeping', 
-    'Dog Walk'
-  ],
 
   bookingTypeMap: {
     'Housekeeping': 'housekeeping',

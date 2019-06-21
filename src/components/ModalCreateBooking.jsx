@@ -3,7 +3,7 @@ import api from '../utils/api.js';
 import utils from '../utils/utils.js';
 import constants from '../assets/constants.js'
 import DatePicker from "react-datepicker";
-import Dropdown from 'react-dropdown';
+import Select from 'react-select';
 
 const { useInput } = utils;
 const { bookingTypes, bookingTypeMap } = constants;
@@ -28,7 +28,7 @@ const ModalCreateBooking = (props) => {
   let now = new Date();
   const [date, handleDate] = useState(now);
   const [time, handleTime] = useState(now);
-  const [bookingType, handleBookingType] = useState('Housekeeping');
+  const [bookingType, handleBookingType] = useState(bookingTypes[0]);
   const [submitted, handleSubmitted] = useState(false);
 
   // component-specific data-parsing method
@@ -88,11 +88,12 @@ const ModalCreateBooking = (props) => {
         <div className='right'>
           <label>
             Booking Type
-            <Dropdown 
-              className='booking-types'
+            <Select 
+              className="react-select-container"
+              classNamePrefix="react-select"
               options={bookingTypes} 
-              value={bookingTypes[0]}
-              onChange={(e) => handleBookingType(e.value)}
+              value={bookingType}
+              onChange={(val) => handleBookingType(val)}
             />
           </label>
 
@@ -130,7 +131,7 @@ const ModalCreateBooking = (props) => {
             e.preventDefault();
             handleSubmitted(true);
             // query the api to make a new booking
-            api.createBooking({...value, datetime:combineDateTime(), bookingtype:bookingTypeMap[bookingType]})
+            api.createBooking({...value, datetime:combineDateTime(), bookingtype:bookingType.value})
             // upon successful transaction, re-fetch the bookings
             .then( res => api.getBookings() )
             // write the bookings to state

@@ -1,7 +1,7 @@
 
 # AB Challenge
 Ed Ryan  
-June 19, 2019
+June 21, 2019
 
 ### Requirements
 
@@ -25,8 +25,7 @@ All basic requirements are fulfilled.
 Our bundling tool is **Webpack**.  
 Stylings are provided via **Sass** and in-lined with Webpack.  
 State is managed via **Hooks**.  
-Virtually every component is a functional component.  
-Imported modules are used. **react-datepicker** allows us to pick the date and time while **react-dropdown** manages the dropdown menu.
+Imported modules are used. **react-datepicker** allows us to pick the date and time while **react-select** manages the dropdown menu.
 
 ### The src folder
 As usual - src holds most of the application logic. 
@@ -50,7 +49,7 @@ This approach does two things: Firstly, all component stylings are given as chil
 3. Fairly good separation of concerns. Components are primarily concerned with the display of information. Functions that massage data live in their own part of the codebase.
  
 ### To do
-1. Provide some kind of feedback to the user while the booking is being created - something like a activity indicator.
+1. Provide some kind of feedback to the user while the booking is being created - something like a activity indicator or notification.
 2. The veil behind the modal has strange rendering behavior when the document is larger than the viewport.
 3. Media rules to collapse the flexbox when the document width gets too tiny.
 4. Generalize my GET request to the API. Right now, getBookings is also parsing the data. I also want the GET request method to take arguments so I have some amount of programmatic control over filtering and skipping.

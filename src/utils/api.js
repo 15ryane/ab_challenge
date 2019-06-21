@@ -81,6 +81,8 @@ export const api = {
 
     const {name, email, address, street, city, state, zip, bookingtype, datetime } = booking;
 
+    console.log(booking);
+
     return fetch(`${process.env.API_URL}`, {
       method: 'POST',
       headers: {
