@@ -17,6 +17,7 @@ module.exports = () => {
     entry: path.resolve('./src', 'index.js'),
     output: {
       path: path.resolve(__dirname, 'build'), 
+      publicPath: "/build/",
       filename: 'bundle.js'
     },
     module: {
@@ -49,7 +50,7 @@ module.exports = () => {
       ]
     },
     devServer: {
-      publicPath: '/',
+      publicPath: '/build',
       port: 8080,
     },
     plugins: [
