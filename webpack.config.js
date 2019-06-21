@@ -17,7 +17,7 @@ module.exports = () => {
     entry: path.resolve('./src', 'index.js'),
     output: {
       path: path.resolve(__dirname, 'build'), 
-      publicPath: "https://15ryane.github.io/ab_challenge/build/",
+      publicPath: "build/",
       filename: 'bundle.js'
     },
     module: {
