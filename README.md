@@ -53,6 +53,7 @@ This approach does two things: Firstly, all component stylings are given as chil
 2. The veil behind the modal has strange rendering behavior when the document is larger than the viewport.
 3. Media rules to collapse the flexbox when the document width gets too tiny.
 4. Generalize my GET request to the API. Right now, getBookings is also parsing the data. I also want the GET request method to take arguments so I have some amount of programmatic control over filtering and skipping.
+5. Unit testing!
 
 ### Thanks
 Thank you for taking the time to look through the application! Let me know if you have any questions or thoughts.

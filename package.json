@@ -7,7 +7,7 @@
     "build": "NODE_ENV=development webpack",
     "start": "NODE_ENV=production src/index.js",
     "dev": "NODE_ENV=development webpack-dev-server --progress --hot --inline",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -15,12 +15,19 @@
   },
   "author": "Ed Ryan @15ryane",
   "license": "ISC",
+  "jest": {
+    "verbose": true
+  },
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
     "css-loader": "^2.1.1",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.3.5",
     "file-loader": "^4.0.0",
     "jest": "^24.8.0",
     "sass-loader": "^7.1.0",
