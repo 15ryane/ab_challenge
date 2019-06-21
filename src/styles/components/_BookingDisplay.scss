@@ -1,0 +1,48 @@
+.booking-display{
+
+  width: 100%;
+  flex-grow: 1;
+
+  margin: 10px 0px;
+
+  background-color: $secondary-color;
+
+  .booking-table {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 10px;
+    padding-top: 5px;
+
+    div {
+      flex-basis: 0;
+      flex-grow: 1;
+      }
+    .datetime {
+      text-align: right;
+    }
+    .address {
+      flex-grow: 1.5;
+    }
+  }
+
+  .header {
+
+    background: $secondary-color;
+    font-size: 0.9rem;
+
+  } 
+  
+  .row {
+
+    margin: 1px;
+
+    background: $primary-color;
+    opacity: 0.7;
+
+    font-size: 0.75rem;
+    font-weight: 350;
+
+  }
+
+}

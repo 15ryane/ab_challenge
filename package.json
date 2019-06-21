@@ -1,0 +1,41 @@
+{
+  "name": "ab_challenge",
+  "version": "1.0.0",
+  "description": "Apartment Butler -  FE Challenge",
+  "main": "index.js",
+  "scripts": {
+    "build": "NODE_ENV=development webpack",
+    "start": "NODE_ENV=production src/index.js",
+    "dev": "NODE_ENV=development webpack-dev-server --progress --hot --inline",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/15ryane/013_Chall_AB.git"
+  },
+  "author": "Ed Ryan @15ryane",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^2.1.1",
+    "file-loader": "^4.0.0",
+    "jest": "^24.8.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "env-cmd": "^9.0.3",
+    "node-sass": "^4.11.0",
+    "react": "^16.8.4",
+    "react-datepicker": "^2.7.0",
+    "react-dom": "^16.8.4",
+    "react-dropdown": "^1.6.4"
+  }
+}
