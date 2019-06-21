@@ -1,6 +1,7 @@
 
 # AB Challenge
-Ed Ryan, June 19, 2019
+Ed Ryan  
+June 19, 2019
 
 ### Requirements
 
@@ -30,9 +31,9 @@ Imported modules are used. **react-datepicker** allows us to pick the date and t
 ### The src folder
 As usual - src holds most of the application logic. 
 
-**/assets** contains static files and constants.
-**/utils** contains functions related to the acquisition or parsing of data.
-**/styles** contains stylings. 
+**/assets** contains static files and constants.  
+**/utils** contains functions related to the acquisition or parsing of data.  
+**/styles** contains stylings.  
 
 ### A word on stylings
 My approach to styling folder structure is largely inspired by [David Khourshid's primer](https://hugogiraudel.com/2015/06/18/styling-react-components-in-sass/) on namespacing in styling - the most disheartening thing in the world is not understanding why your CSS isn't affecting the page, and a proactive approach to namespacing wards that off nicely. In short, I do the following in order:
@@ -56,5 +57,7 @@ This approach does two things: Firstly, all component stylings are given as chil
 5. Unit testing!
 
 ### Thanks
-Thank you for taking the time to look through the application! Let me know if you have any questions or thoughts.
+Thank you for taking the time to look through the application!  
+Let me know if you have any questions or thoughts.  
+  
 -Ed Ryan
