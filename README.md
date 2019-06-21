@@ -1,6 +1,7 @@
 
 # AB Challenge
-Ed Ryan, June 19, 2019
+Ed Ryan  
+June 19, 2019
 
 ### Requirements
 
@@ -56,5 +57,7 @@ This approach does two things: Firstly, all component stylings are given as chil
 5. Unit testing!
 
 ### Thanks
-Thank you for taking the time to look through the application! Let me know if you have any questions or thoughts.
+Thank you for taking the time to look through the application!  
+Let me know if you have any questions or thoughts.  
+  
 -Ed Ryan
