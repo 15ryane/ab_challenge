@@ -50,9 +50,9 @@ All component stylings are nested within the top-level component's div class. Th
  
 ### To do
 1. Provide some kind of feedback to the user while the booking is being created - something like a activity indicator or notification.
-2. The veil behind the modal has strange rendering behavior when the document is larger than the viewport.
-3. Media rules to collapse the flexbox when the document width gets too tiny.
-4. Generalize my GET request to the API. Right now, getBookings is also parsing the data. I also want the GET request method to take arguments so I have some amount of programmatic control over filtering and skipping.
+2. The veil behind the modal has strange rendering behavior when the document is larger than the viewport. I'd like to redo the implementation entirely. Ideally, Modal properties would granted via a higher-order component so that we can easily create future modals.
+3. Media rules to better accomodate small screens.
+4. Generalize my GET request to the API. I want to have some amount of programmatic control over filtering and skipping when querying the DB for bookings.
 5. Unit testing!
 
 ### Thanks
