@@ -5,19 +5,19 @@ June 21, 2019
 
 ### Requirements
 
-- Should match the attached mockups
-- Should use a modern JS framework (we use React, but use whatever is most comfortable for you)
-- Should support creating and displaying two types of bookings: 
--- Housekeeping 
--- Dog walks
-- Should let the user create a new booking and require the following data:
--- Email
--- Name
--- Address
--- Booking Type (housekeeping, dog walk)
--- Booking Date
--- Booking Time
--- Should list bookings in ascending order by date
+- Should match the attached mockups  
+- Should use a modern JS framework  
+- Should support creating and displaying two types of bookings:  
+-- Housekeeping  
+-- Dog walks  
+- Should let the user create a new booking and require the following data:  
+-- Email  
+-- Name  
+-- Address  
+-- Booking Type (housekeeping, dog walk)  
+-- Booking Date  
+-- Booking Time  
+-- Should list bookings in ascending order by date  
 
 ### General overview
 All basic requirements are fulfilled.  
@@ -35,12 +35,12 @@ As usual - src holds most of the application logic.
 **/styles** contains stylings.  
 
 ### A word on stylings
-My approach to styling folder structure is largely inspired by [David Khourshid's primer](https://hugogiraudel.com/2015/06/18/styling-react-components-in-sass/) on namespacing in styling - the most disheartening thing in the world is not understanding why your CSS isn't affecting the page, and a proactive approach to namespacing wards that off nicely. In short, I do the following in order:
+My approach to styling folder structure is largely inspired by [David Khourshid's primer](https://hugogiraudel.com/2015/06/18/styling-react-components-in-sass/) on namespacing in styling - the most disheartening thing in the world is not understanding why your CSS isn't affecting the page, and a proactive approach to namespacing keeps those moments from happening. I do the following:
 1. Reset my browser defaults.
 2. Then, define global stylings. These go in main.scss.
 3. Next come component and container stylings. These are imported via their respective **_all.scss** files.
 
-This approach does two things: Firstly, all component stylings are given as children their class. Stylings in one component will never pollute another component. If you get rid of the component, just blow up its corresponding styling file. Secondly, it gives component stylings dibs. Since the component stylings are imported last, they'll have precedence over global stylings - which is what we want.
+All component stylings are nested within the top-level component's div class. This ensures that stylings in one component will never pollute another. If you get rid of the component, delete its corresponding styling file. Finally, component stylings have precedence over global stylings, since they're imported last.
 
 
 ### Neat features
