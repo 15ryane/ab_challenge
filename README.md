@@ -46,14 +46,14 @@ This approach does two things: Firstly, all component stylings are given as chil
 ### Neat features
 1. I've guarded sensitive information (in particular, the API key) within an **.env** file. Env variable loading happens prior to bundling in the Webpack config.
 2. Custom React Hooks makes for easy form input binding - check out the ModalCreateBooking component.
-3. Fairly good separation of concerns. Components are primarily concerned with the display of information. Functions that massage data live in their own part of the codebase.
+3. Fairly good separation of concerns. As an example - the dropdowns, filter, and GET request all reference the bookingTypes array located in assets/constants.js. To add a booking type, just edit the constants file.
  
 ### To do
-1. Provide some kind of feedback to the user while the booking is being created - something like a activity indicator or notification.
-2. The veil behind the modal has strange rendering behavior when the document is larger than the viewport.
-3. Media rules to collapse the flexbox when the document width gets too tiny.
-4. Generalize my GET request to the API. Right now, getBookings is also parsing the data. I also want the GET request method to take arguments so I have some amount of programmatic control over filtering and skipping.
-5. Unit testing!
+1. The veil behind the modal has strange rendering behavior when the document is larger than the viewport.
+2. Media rules to collapse the flexbox when the document width gets too tiny.
+3. Pagination isn't implemented yet.
+4. Currently, the API is hit everytime the page is refreshed, and every time the filter button is clicked. There are upsides and downsides to this - the big downside is that I don't really consider this implementation scalable. These responses should proabably be cached, but the way in which we go about doing it really depends on the context - DB load, peak/average number of users, etc. 
+5. Unit testing.
 
 ### Thanks
 Thank you for taking the time to look through the application!  

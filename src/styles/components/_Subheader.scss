@@ -1,7 +1,26 @@
 .subheader {
 
   display: flex;
-  justify-content: space-between;
   width: 100%;
+
+  .subheader-right{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: 100%;
+
+    button{
+      margin-right: 10px;
+    }
+    .button-box{
+      button{
+        margin: 0;
+      }
+    }
+    .react-select-container{
+      min-width: 20%;
+      margin-right: 10px;
+    }
+  }
 
 }

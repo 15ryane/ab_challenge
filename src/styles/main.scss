@@ -151,6 +151,22 @@ button, .button {
 	flex-flow: column nowrap;
 }
 
+.react-select-container{
+
+	.react-select__control{
+		border-radius: 3px;
+		border: 0.5px solid #979797;          
+	}
+	.react-select__single-value{
+		padding: 2px;
+	}
+}
+
+.dim {
+	opacity: 0.2;
+	transition: all ease 0.2s;
+}
+
 @import 'components/all';
 @import 'containers/all';
 

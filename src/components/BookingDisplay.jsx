@@ -10,10 +10,14 @@ const BookingDisplay = props => {
 
   props.bookings.forEach( (booking, idx) => {
     bookingArray.push(<BookingRow key={'key' + idx} booking={booking} />)
-  })
+  });
+
+  const fetchingDimmer = props.isFetching ? 'dim' : '';
+
+  console.log(fetchingDimmer);
 
   return(
-    <div className="booking-display">
+    <div className={"booking-display " + fetchingDimmer}>
       <BookingHeaders />
       {bookingArray}
     </div>

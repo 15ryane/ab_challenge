@@ -3,12 +3,15 @@ import constants from "../assets/constants.js";
 const { titleCase } =  utils;
 const { bookingTypeMap } = constants;
 /*
+ *
  * Houses all methods related to the API
+ * 
  */
 
 export const api = {
 
   parseQuery: (booking) => {
+
     // parse address
     const parsedAddress1 = 
       booking.address.match(/\S+/g).reduce( (acc, token) => {
@@ -35,10 +38,28 @@ export const api = {
     }
   },
 
-  getBookings: () => {
+  getBookings: (args = {}) => {
+
+    let filter = '';
+    let skip = 0;
+
+    if(args.filter){
+      filter = 
+        args.filter.map( type => `{"bookingtype": "${type.value}"}`)
+        .join(', ');
+      if(args.filter.length > 1){
+        filter = ` "$or": [${filter}]`
+      } else {
+        filter = filter.substring(1,filter.length-1)
+      }
+    }
+
+    if(args.page){
+
+    }
 
     const query = 
-      `q={}
+      `q={${filter}}
       &h={"$fields": {
         "name": 1,
         "email": 1,
@@ -49,6 +70,8 @@ export const api = {
         "bookingtype": 1,
         "datetime": 1
       } }
+      &max=20
+      &skip=${skip}
       &sort=datetime&dir=1`
 
     return fetch(`${process.env.API_URL}?${query}`, {
@@ -58,10 +81,7 @@ export const api = {
       },
     })
     .then( res => res.json() )
-    .then( res => res.map( booking => 
-        api.parseQuery(booking)
-    ))
-    .catch( err => console.log(err) )
+    .then( res => res.map( booking => api.parseQuery(booking) ) )
   },
 
   deleteBooking: (id) => {
@@ -74,7 +94,6 @@ export const api = {
       },
     })
     .then( res => res.json() );
-    
   },
 
   createBooking: (booking) => {
@@ -102,8 +121,10 @@ export const api = {
         datetime
       })
     })
-    .then( res =>  res.json() )
-    .catch( err => console.log(err) )
+    .then( res =>  {
+      if(res.status === 400) throw new Error('Invalid data - missing/malformed fields')
+      res.json();
+    })
   }
 
 }
