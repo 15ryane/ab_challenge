@@ -24,7 +24,7 @@ const Subheader = props => {
         <button 
           onClick={() => {
             setState({...state, isFetching: true});
-            api.getBookings()
+            api.getBookings({filter: filter})
             .then( bookings => setState({...state, bookings: bookings, isFetching: false}) )
             .catch( err => {
               setState({...state, isFetching: false});
