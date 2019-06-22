@@ -14,8 +14,6 @@ const BookingDisplay = props => {
 
   const fetchingDimmer = props.isFetching ? 'dim' : '';
 
-  console.log(fetchingDimmer);
-
   return(
     <div className={"booking-display " + fetchingDimmer}>
       <BookingHeaders />
