@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import Select from 'react-select'
-
-import api from '../utils/api.js'
 import constants from '../assets/constants.js'
 
 const Subheader = props => {
-  const {state, setState} = props;
-  const [filter, handleFilter] = useState('');
+
+  const {state, setState, incrementPage, decrementPage, handleGetBookings} = props;
 
   return(
     <div className={"subheader"}>
@@ -16,29 +14,23 @@ const Subheader = props => {
           className="react-select-container"
           classNamePrefix="react-select"
           options={constants.bookingTypes}
-          value={filter}
-          placeholder="Sort by type"
+          value={state.filter}
+          placeholder="Filter by type"
           isMulti
-          onChange={(v) => handleFilter(v)}
+          onChange={(value) => setState({...state, filter: value}) }
         />
-        <button 
-          onClick={() => {
-            setState({...state, isFetching: true});
-            api.getBookings({filter: filter})
-            .then( bookings => setState({...state, bookings: bookings, isFetching: false}) )
-            .catch( err => {
-              setState({...state, isFetching: false});
-              console.error(err);
-            });
-          }}
-          disabled={filter === '' ? true : false}
-        >
-          Filter Bookings
-        </button>
+        <button onClick={handleGetBookings}>Filter Bookings</button>
         <button onClick={() => setState({...state, modal: true})}>Create Booking</button>
         <div className='button-box'>
-          <button>{'<'}</button>
-          <button>{'>'}</button>
+          <button
+            onClick={decrementPage}
+            disabled={state.isFetching}
+          >{'<'}</button>
+          <span>Page {state.currPage} of {state.lastPage}</span>
+          <button
+            onClick={incrementPage}
+            disabled={state.isFetching}
+          >{'>'}</button>
         </div>
       </div>
     </div>

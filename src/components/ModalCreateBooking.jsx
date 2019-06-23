@@ -8,10 +8,9 @@ import Select from 'react-select';
 const { useInput } = utils;
 const { bookingTypes } = constants;
 
-// consider granting modal behavior via HoC
 const ModalCreateBooking = (props) => {
 
-  const {state, setState} = props;
+  const {state, setState, handleGetBookings} = props;
   const hidden = state.modal ? '' : 'hide';
 
   // handle form input values
@@ -24,12 +23,10 @@ const ModalCreateBooking = (props) => {
     zip: '',
   });
 
-  // seperate hooks to deal with the imported components & submit button
+  // seperate hooks to deal with the imported components
   let now = new Date();
   const [date, handleDate] = useState(now);
   const [time, handleTime] = useState(now);
-  const [submitted, handleSubmitted] = useState(false);
-  const [status, handleStatus] = useState('');
   const [bookingType, handleBookingType] = useState(bookingTypes[0]);
 
   // component-specific data-parsing method
@@ -40,38 +37,32 @@ const ModalCreateBooking = (props) => {
     .toGMTString()
     .substring(5);
   }
-
   
-  const handleSubmit = (e) => {
+  const handleCreateBooking = (e) => {
     e.preventDefault();
-    handleSubmitted(true);
-    handleStatus('Creating your booking...')
+    setState({...state, isFetching:true, status: 'Creating your booking...'});
     // query the api to make a new booking
     api.createBooking({
       ...value, 
-      datetime:combineDateTime(), 
-      bookingtype:bookingType.value
+      datetime: combineDateTime(), 
+      bookingtype: bookingType.value
     })
     // upon successful transaction, update the bookings
     .then( res => {
-      handleStatus('Booking created! Updating your bookings...');
+      setState({...state, status: 'New booking created! Updating your bookings...'})
       return api.getBookings();
     })
-    // write the updated bookings to state
-    .then( bookings => setState({...state, bookings: bookings, modal:false}) )
     // and set form values to default
-    .then( () => {
-      handleStatus('');
-      handleSubmitted(false);
+    .then( bookings => {
+      setState({...state, bookings: bookings, status: '', modal: false, currPage: 1});
       now = new Date();
       handleDate(now);
       handleTime(now);
       reset();
     })
     .catch( err => {
-      handleSubmitted(false);
-      handleStatus(err.toString())
-      console.log(err) 
+      setState({...state, status: err.toString(), isFetching: false});
+      console.log(err);
     });
   }
 
@@ -158,14 +149,14 @@ const ModalCreateBooking = (props) => {
       </form>
       <div className={'button-box'}>
         <div className={'message'}>
-          <h3>{status}</h3>
+          <h3>{state.status}</h3>
         </div>
         <input 
           className={'button'}
           type="submit" 
           value="Create Booking" 
-          disabled={submitted}
-          onClick={handleSubmit}
+          disabled={state.isFetching}
+          onClick={handleCreateBooking}
         />
       </div>
     </div>

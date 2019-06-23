@@ -20,7 +20,7 @@ June 21, 2019
 -- Should list bookings in ascending order by date  
 
 ### General overview
-All basic requirements are fulfilled.  
+All basic requirements are fulfilled, along with pagination and filtering.
 **React** is our weapon of choice.  
 Our bundling tool is **Webpack**.  
 Stylings are provided via **Sass** and in-lined with Webpack.  
@@ -40,20 +40,20 @@ My approach to styling folder structure is largely inspired by [David Khourshid'
 2. Then, define global stylings. These go in main.scss.
 3. Next come component and container stylings. These are imported via their respective **_all.scss** files.
 
-All component stylings are nested within the top-level component's div class. This ensures that stylings in one component will never pollute another. If you get rid of the component, delete its corresponding styling file. Finally, component stylings have precedence over global stylings, since they're imported last.
+All component stylings are nested within the top-level component's div class. This ensures that stylings in one component will never pollute another. If you get rid of the component, delete its corresponding styling file. Finally, component stylings have precedence over global stylings, since they're imported last and have greater specificity.
 
 
 ### Neat features
 1. I've guarded sensitive information (in particular, the API key) within an **.env** file. Env variable loading happens prior to bundling in the Webpack config.
-2. Custom React Hooks makes for easy form input binding - check out the ModalCreateBooking component.
-3. Fairly good separation of concerns. As an example - the dropdowns, filter, and GET request all reference the bookingTypes array located in assets/constants.js. To add a booking type, just edit the constants file.
+2. Filter by multiple booking types!
+3. Custom React Hooks makes for easy form input binding - check out the ModalCreateBooking component.
+4. Fairly good separation of concerns. As an example - the dropdowns, filter, and GET request all reference the bookingTypes array located in assets/constants.js. To add a booking type, just edit the constants file.
  
 ### To do
 1. The veil behind the modal has strange rendering behavior when the document is larger than the viewport.
-2. Media rules to collapse the flexbox when the document width gets too tiny.
-3. Pagination isn't implemented yet.
-4. Currently, the API is hit everytime the page is refreshed, and every time the filter button is clicked. There are upsides and downsides to this - the big downside is that I don't really consider this implementation scalable. These responses should proabably be cached, but the way in which we go about doing it really depends on the context - DB load, peak/average number of users, etc. 
-5. Unit testing.
+2. Media rules to more elegantly collapse the interface when document width gets too tiny.
+3. Currently, the API is hit everytime the page is refreshed, and every time the filter button is clicked. There are upsides and downsides to this - and downsides being that it's gonna be slow and unscalable. These responses should proabably be cached, but the way in which we go about doing it really depends on the context - DB load, peak/average number of users, etc. 
+5. Unit testing. Hooks don't have great support in Enzyme yet - I had a devil of a time trying to set up the test environment.
 
 ### Thanks
 Thank you for taking the time to look through the application!  

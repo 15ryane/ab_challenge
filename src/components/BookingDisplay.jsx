@@ -6,13 +6,16 @@ import BookingRow from './BookingRow.jsx';
 
 const BookingDisplay = props => {
 
+  const { state } = props;
   const bookingArray = [];
 
-  props.bookings.forEach( (booking, idx) => {
-    bookingArray.push(<BookingRow key={'key' + idx} booking={booking} />)
+  state.bookings.forEach( (booking, idx) => {
+    if(idx >= ((state.currPage - 1) * 20) && idx < (state.currPage * 20) ){
+      bookingArray.push(<BookingRow key={'key' + idx} booking={booking} />)
+    }
   });
 
-  const fetchingDimmer = props.isFetching ? 'dim' : '';
+  const fetchingDimmer = state.isFetching ? 'dim' : '';
 
   return(
     <div className={"booking-display " + fetchingDimmer}>

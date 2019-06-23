@@ -6,10 +6,31 @@ const { bookingTypeMap } = constants;
  *
  * Houses all methods related to the API
  * 
+ * getBookings() and countRecords() takes an object as an optional arg with the following keys:
+ * filter: an array of objects with the shape {value: str, label: str}
+ * currPage: a number
+ * 
+ * When not given an argument
+ *  - getBookings()  returns the first 20 records. 
+ *  - countRecords() returns the total number of records.
+ * 
  */
 
 export const api = {
 
+  // takes a filter obj (see constants.js)
+  // returns a filter query as a string
+  parseFilterObj: (filterObj) => {
+    let output = filterObj.map( type => `{"bookingtype": "${type.value}"}`).join(', ');
+    if(filterObj.length > 1){
+      output = ` "$or": [${output}]`
+    } else {
+      output = output.substring(1, output.length-1)
+    }
+    return output;
+  },
+
+  // parses user input into DB-digestable query values
   parseQuery: (booking) => {
 
     // parse address
@@ -38,24 +59,10 @@ export const api = {
     }
   },
 
-  getBookings: (args = {}) => {
+  getBookings: (filter = '') => {
 
-    let filter = '';
-    let skip = 0;
-
-    if(args.filter){
-      filter = 
-        args.filter.map( type => `{"bookingtype": "${type.value}"}`)
-        .join(', ');
-      if(args.filter.length > 1){
-        filter = ` "$or": [${filter}]`
-      } else {
-        filter = filter.substring(1,filter.length-1)
-      }
-    }
-
-    if(args.page){
-
+    if(filter !== ''){
+      filter = api.parseFilterObj(filter);
     }
 
     const query = 
@@ -70,14 +77,13 @@ export const api = {
         "bookingtype": 1,
         "datetime": 1
       } }
-      &max=20
-      &skip=${skip}
       &sort=datetime&dir=1`
 
     return fetch(`${process.env.API_URL}?${query}`, {
       headers: {
         'cache-control': 'no-cache',
         'x-apikey': process.env.API_KEY,
+        'content-type': 'application/json'
       },
     })
     .then( res => res.json() )
@@ -99,8 +105,6 @@ export const api = {
   createBooking: (booking) => {
 
     const {name, email, address, street, city, state, zip, bookingtype, datetime } = booking;
-
-    console.log(booking);
 
     return fetch(`${process.env.API_URL}`, {
       method: 'POST',
